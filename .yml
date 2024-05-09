@@ -1,0 +1,30 @@
+name: Build and Format Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Install clang-format
+      run: sudo apt-get install -y clang-format
+    
+    - name: Format code
+      run: clang-format -i test.c
+      
+    - name: Compile program
+      run: make
+
+    - name: Check compilation
+      run: ./test.out
