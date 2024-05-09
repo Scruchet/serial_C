@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-Wall -Wextra
-TARGET=test
+CFLAGS=-Wall -Wextra -lwiringPi
+TARGET=received
 
 all: $(TARGET)
 
@@ -11,4 +11,4 @@ $(TARGET).o: $(TARGET).c
 	$(CC) $(CFLAGS) -c $(TARGET).c
 
 clean:
-	rm -f $(TARGET).out $(TARGET).o
+	rm -f *.out *.o
